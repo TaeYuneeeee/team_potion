@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.swc_project">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name = ".mainlayout" android:label="메인화면"/>
+        <activity android:name = ".memberlayout" android:label="개인정보"/>
+        <activity android:name=".register" android:label="회원가입"/>
+        <activity android:name=".NewPostActivity" android:label="청원글쓰기"/>
+        <activity android:name=".PostDetailAct" android:label="글 보기"/>
+        <activity android:name=".Fragment4_detail" android:label="혜택 내용"/>
+
+    </application>
+
+</manifest>
