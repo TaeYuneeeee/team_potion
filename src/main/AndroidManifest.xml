@@ -18,12 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name = ".mainlayout" android:label="메인화면"/>
         <activity android:name = ".memberlayout" android:label="개인정보"/>
         <activity android:name=".register" android:label="회원가입"/>
         <activity android:name=".NewPostActivity" android:label="청원글쓰기"/>
         <activity android:name=".PostDetailAct" android:label="글 보기"/>
-        <activity android:name=".Fragment4_detail" android:label="혜택 내용"/>
+        <activity android:name=".beginning" android:label="메인 화면"/>
 
     </application>
 

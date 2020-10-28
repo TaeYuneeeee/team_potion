@@ -17,15 +17,9 @@ public class board extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment2,container,false);
-        Button button1 = viewGroup.findViewById(R.id.fg_bt2);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(getActivity(), NewPostActivity.class);
-                startActivity(in);
-            }
-        });
-        return viewGroup;
+//        viewGroup = (ViewGroup) inflater.inflate(R.layout.board,container,false);
+        View view = inflater.inflate(R.layout.board,container,false);
+
+        return view;
     }
 }

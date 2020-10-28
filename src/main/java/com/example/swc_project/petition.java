@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,20 +40,30 @@ public class petition extends Fragment {
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReference1;
 
+    TextView petition_tv;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.petition,container,false);
 //        viewGroup = (ViewGroup) inflater.inflate(R.layout.petition,container,false);
-        recyclerView = (RecyclerView) viewGroup.findViewById(R.id.petition_recy);
+        recyclerView = (RecyclerView) view.findViewById(R.id.petition_recy);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.scrollToPosition(0);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        petition_tv = view.findViewById(R.id.petition_tv);
         adapter = new Adapter(data);
         data = new ArrayList<>();
+
+        petition_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), NewPostActivity.class);
+                startActivity(in);
+            }
+        });
 
         databaseReference1 = FirebaseDatabase.getInstance().getReference().child("posts");
 
@@ -76,6 +87,6 @@ public class petition extends Fragment {
             }
         });
         recyclerView.setAdapter(adapter);
-        return viewGroup;
+        return view;
     }
 }

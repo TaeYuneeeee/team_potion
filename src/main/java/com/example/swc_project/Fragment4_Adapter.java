@@ -44,7 +44,7 @@ public class Fragment4_Adapter extends RecyclerView.Adapter<Fragment4_Adapter.My
         holder.text1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Fragment4_detail.class);
+                Intent intent = new Intent(view.getContext(), benefit_detail.class);
                 intent.putExtra("title",check1);
                 intent.putExtra("title",check2);
 
