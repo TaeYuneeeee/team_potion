@@ -60,14 +60,14 @@ public class petition extends Fragment {
         petition_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), NewPostActivity.class);
+                Intent in = new Intent(getActivity(), petition_newPost.class);
                 startActivity(in);
             }
         });
 
-        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("posts");
+        databaseReference1 = FirebaseDatabase.getInstance().getReference().child("petition");
 
-        databaseReference = database.getInstance().getReference("posts"); // DB 테이블 연결
+        databaseReference = database.getInstance().getReference("petition"); // DB 테이블 연결
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -18,7 +18,7 @@ public class timetable extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment2,container,false);
-        View view = inflater.inflate(R.layout.board,container,false);
+        View view = inflater.inflate(R.layout.timetable,container,false);
         return view;
     }
 }

@@ -23,6 +23,8 @@
         <activity android:name=".NewPostActivity" android:label="청원글쓰기"/>
         <activity android:name=".PostDetailAct" android:label="글 보기"/>
         <activity android:name=".beginning" android:label="메인 화면"/>
+        <activity android:name=".benefit_detail" android:label="혜택 상세"/>
+        <activity android:name=".petition_newPost" android:label="혜택 글쓰기"/>
 
     </application>
 
