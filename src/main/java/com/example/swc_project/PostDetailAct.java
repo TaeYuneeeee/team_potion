@@ -155,7 +155,8 @@ public class PostDetailAct extends AppCompatActivity {
 
         /*
         * 닉네임 가져오기가 필요함 시부엉
-        * *//*
+        * */
+        /*
         mDatabase1 = FirebaseDatabase.getInstance().getReference().child("memberinfor");
         mDatabase1.addListenerForSingleValueEvent(new ValueEventListener() {
 
