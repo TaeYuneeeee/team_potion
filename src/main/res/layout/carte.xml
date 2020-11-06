@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="식단표"
         android:textSize="50dp"
+        android:id="@+id/carte_tv"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

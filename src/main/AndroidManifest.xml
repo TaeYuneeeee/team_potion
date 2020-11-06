@@ -25,7 +25,7 @@
         <activity android:name=".beginning" android:label="메인 화면"/>
         <activity android:name=".benefit_detail" android:label="혜택 상세"/>
         <activity android:name=".petition_newPost" android:label="혜택 글쓰기"/>
-
+        <activity android:name=".timetable_edit" android:label="시간표 작성"/>
     </application>
 
 </manifest>
