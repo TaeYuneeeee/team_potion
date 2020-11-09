@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,8 +27,15 @@ public class timetable extends Fragment {
     ViewGroup viewGroup;
     TextView tv_title;
     TextView Mon_1, Mon_2,Mon_3,Mon_4,Mon_5,Mon_6,Mon_7,Mon_8,Mon_9,Mon_10;
+    TextView Tue_1, Tue_2,Tue_3,Tue_4,Tue_5,Tue_6,Tue_7,Tue_8,Tue_9,Tue_10;
+    TextView Wed_1, Wed_2,Wed_3,Wed_4,Wed_5,Wed_6,Wed_7,Wed_8,Wed_9,Wed_10;
+    TextView Thu_1, Thu_2,Thu_3,Thu_4,Thu_5,Thu_6,Thu_7,Thu_8,Thu_9,Thu_10;
+    TextView Fri_1, Fri_2,Fri_3,Fri_4,Fri_5,Fri_6,Fri_7,Fri_8,Fri_9,Fri_10;
+
     private DatabaseReference databaseReference;
+    private DatabaseReference mDatabase;
     private FirebaseDatabase database;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,13 +63,61 @@ public class timetable extends Fragment {
         Mon_8 = view.findViewById(R.id.tv_Mon_8);
         Mon_9 = view.findViewById(R.id.tv_Mon_9);
         Mon_10 = view.findViewById(R.id.tv_Mon_10);
+
+        Tue_1 = view.findViewById(R.id.tv_Tue_1);
+        Tue_2 = view.findViewById(R.id.tv_Tue_2);
+        Tue_3 = view.findViewById(R.id.tv_Tue_3);
+        Tue_4 = view.findViewById(R.id.tv_Tue_4);
+        Tue_5 = view.findViewById(R.id.tv_Tue_5);
+        Tue_6 = view.findViewById(R.id.tv_Tue_6);
+        Tue_7 = view.findViewById(R.id.tv_Tue_7);
+        Tue_8 = view.findViewById(R.id.tv_Tue_8);
+        Tue_9 = view.findViewById(R.id.tv_Tue_9);
+        Tue_10 = view.findViewById(R.id.tv_Tue_10);
+
+        Wed_1 = view.findViewById(R.id.tv_Wed_1);
+        Wed_2 = view.findViewById(R.id.tv_Wed_2);
+        Wed_3 = view.findViewById(R.id.tv_Wed_3);
+        Wed_4 = view.findViewById(R.id.tv_Wed_4);
+        Wed_5 = view.findViewById(R.id.tv_Wed_5);
+        Wed_6 = view.findViewById(R.id.tv_Wed_6);
+        Wed_7 = view.findViewById(R.id.tv_Wed_7);
+        Wed_8 = view.findViewById(R.id.tv_Wed_8);
+        Wed_9 = view.findViewById(R.id.tv_Wed_9);
+        Wed_10 = view.findViewById(R.id.tv_Wed_10);
+
+        Thu_1 = view.findViewById(R.id.tv_Thu_1);
+        Thu_2 = view.findViewById(R.id.tv_Thu_2);
+        Thu_3 = view.findViewById(R.id.tv_Thu_3);
+        Thu_4 = view.findViewById(R.id.tv_Thu_4);
+        Thu_5 = view.findViewById(R.id.tv_Thu_5);
+        Thu_6 = view.findViewById(R.id.tv_Thu_6);
+        Thu_7 = view.findViewById(R.id.tv_Thu_7);
+        Thu_8 = view.findViewById(R.id.tv_Thu_8);
+        Thu_9 = view.findViewById(R.id.tv_Thu_9);
+        Thu_10 = view.findViewById(R.id.tv_Thu_10);
+
+        Fri_1 = view.findViewById(R.id.tv_Fri_1);
+        Fri_2 = view.findViewById(R.id.tv_Fri_2);
+        Fri_3 = view.findViewById(R.id.tv_Fri_3);
+        Fri_4 = view.findViewById(R.id.tv_Fri_4);
+        Fri_5 = view.findViewById(R.id.tv_Fri_5);
+        Fri_6 = view.findViewById(R.id.tv_Fri_6);
+        Fri_7 = view.findViewById(R.id.tv_Fri_7);
+        Fri_8 = view.findViewById(R.id.tv_Fri_8);
+        Fri_9 = view.findViewById(R.id.tv_Fri_9);
+        Fri_10 = view.findViewById(R.id.tv_Fri_10);
+
+
+        //오류 잡기용 db입력 미리 시켜놓기
+
         //월요일 9시
         databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Mon9");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_1.setText(Timedb);
                 } else {
@@ -79,7 +135,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_2.setText(Timedb);
                 } else {
@@ -98,7 +154,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_3.setText(Timedb);
                 } else {
@@ -117,7 +173,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_4.setText(Timedb);
                 } else {
@@ -136,7 +192,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_5.setText(Timedb);
                 } else {
@@ -155,7 +211,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_6.setText(Timedb);
                 } else {
@@ -174,7 +230,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_7.setText(Timedb);
                 } else {
@@ -193,7 +249,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_8.setText(Timedb);
                 } else {
@@ -212,7 +268,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_9.setText(Timedb);
                 } else {
@@ -231,7 +287,7 @@ public class timetable extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
-                if (db.getSubject() != null && db.getSubject().length() != 0) {
+                if (db != null) {
                     String Timedb = db.getSubject();
                     Mon_10.setText(Timedb);
                 } else {
@@ -244,6 +300,776 @@ public class timetable extends Fragment {
                 Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+
+
+        //화요일 9시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue9");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_1.setText(Timedb);
+                } else {
+                    Tue_1.setText("빈 칸");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 10시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue10");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_2.setText(Timedb);
+                } else {
+                    Tue_2.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 11시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue11");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_3.setText(Timedb);
+                } else {
+                    Tue_3.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 12시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue12");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_4.setText(Timedb);
+                } else {
+                    Tue_4.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 13시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue13");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_5.setText(Timedb);
+                } else {
+                    Tue_5.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 14시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue14");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_6.setText(Timedb);
+                } else {
+                    Tue_6.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 15시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue15");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_7.setText(Timedb);
+                } else {
+                    Tue_7.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 16시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue16");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_8.setText(Timedb);
+                } else {
+                    Tue_8.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 17시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue17");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_9.setText(Timedb);
+                } else {
+                    Tue_9.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //화요일 18시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Tue18");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Tue_10.setText(Timedb);
+                } else {
+                    Tue_10.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+        //수요일 9시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed9");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_1.setText(Timedb);
+                } else {
+                    Wed_1.setText("빈 칸");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 10시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed10");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_2.setText(Timedb);
+                } else {
+                    Wed_2.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 11시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed11");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_3.setText(Timedb);
+                } else {
+                    Wed_3.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 12시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed12");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_4.setText(Timedb);
+                } else {
+                    Wed_4.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 13시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed13");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_5.setText(Timedb);
+                } else {
+                    Wed_5.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 14시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed14");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_6.setText(Timedb);
+                } else {
+                    Wed_6.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 15시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed15");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_7.setText(Timedb);
+                } else {
+                    Wed_7.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 16시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed16");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_8.setText(Timedb);
+                } else {
+                    Wed_8.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 17시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed17");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_9.setText(Timedb);
+                } else {
+                    Wed_9.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //수요일 18시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Wed18");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Wed_10.setText(Timedb);
+                } else {
+                    Wed_10.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+        //목요일 9시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu9");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_1.setText(Timedb);
+                } else {
+                    Thu_1.setText("빈 칸");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 10시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu10");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_2.setText(Timedb);
+                } else {
+                    Thu_2.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 11시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu11");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_3.setText(Timedb);
+                } else {
+                    Thu_3.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 12시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu12");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_4.setText(Timedb);
+                } else {
+                    Thu_4.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 13시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu13");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_5.setText(Timedb);
+                } else {
+                    Thu_5.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 14시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu14");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_6.setText(Timedb);
+                } else {
+                    Thu_6.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 15시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu15");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_7.setText(Timedb);
+                } else {
+                    Thu_7.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 16시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu16");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_8.setText(Timedb);
+                } else {
+                    Thu_8.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 17시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu17");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_9.setText(Timedb);
+                } else {
+                    Thu_9.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //목요일 18시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Thu18");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Thu_10.setText(Timedb);
+                } else {
+                    Thu_10.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+        //금요일 9시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri9");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_1.setText(Timedb);
+                } else {
+                    Fri_1.setText("빈 칸");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 10시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri10");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_2.setText(Timedb);
+                } else {
+                    Fri_2.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 11시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri11");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_3.setText(Timedb);
+                } else {
+                    Fri_3.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 12시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri12");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_4.setText(Timedb);
+                } else {
+                    Fri_4.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 13시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri13");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_5.setText(Timedb);
+                } else {
+                    Fri_5.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 14시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri14");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_6.setText(Timedb);
+                } else {
+                    Fri_6.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 15시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri15");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_7.setText(Timedb);
+                } else {
+                    Fri_7.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 16시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri16");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_8.setText(Timedb);
+                } else {
+                    Fri_8.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 17시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri17");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_9.setText(Timedb);
+                } else {
+                    Fri_9.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+        //금요일 18시
+        databaseReference = database.getInstance().getReference("TimeTable").child(userId).child("Fri18");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
+                if (db != null) {
+                    String Timedb = db.getSubject();
+                    Fri_10.setText(Timedb);
+                } else {
+                    Fri_10.setText("빈 칸");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+
         return view;
+    }
+    private void writeMemberInfo(String userId,String Timeweek) {
+        mDatabase.child(Timeweek).setValue("0");
     }
 }
