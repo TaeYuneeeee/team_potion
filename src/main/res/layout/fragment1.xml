@@ -5,19 +5,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="fragment1"
-        android:textSize="30dp"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="회원정보가기"
-        android:id="@+id/fg_bt1"/>
-
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="400dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+    </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

@@ -15,6 +15,7 @@ public class beginning extends AppCompatActivity {
     benefit benefit;
     timetable timetable;
     carte carte;
+    Fragment1 fragment1;
 
 
     @Override
@@ -27,6 +28,7 @@ public class beginning extends AppCompatActivity {
         benefit = new benefit();
         timetable = new timetable();
         carte = new carte();
+        fragment1 = new Fragment1();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.beginning_layout,petition).commitAllowingStateLoss();
 
@@ -56,7 +58,8 @@ public class beginning extends AppCompatActivity {
                     }
                     case R.id.tab5:{
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
+//                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,fragment1).commitAllowingStateLoss();
                         return true;
                     }
                     default: return false;

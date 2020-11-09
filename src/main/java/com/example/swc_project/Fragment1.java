@@ -10,23 +10,23 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import java.util.ArrayList;
 
 public class Fragment1 extends Fragment {
     ViewGroup viewGroup;
-
+    ViewPageAdapter viewPageAdapter;
+    ViewPager viewPager;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment1,container,false);
-        Button button1 = viewGroup.findViewById(R.id.fg_bt1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(getActivity(), memberlayout.class);
-                startActivity(in);
-            }
-        });
-        return viewGroup;
+        View view = inflater.inflate(R.layout.fragment1,container,false);
+//        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment1,container,false);
+          viewPager = (ViewPager)view.findViewById(R.id.viewpager);
+          viewPageAdapter = new ViewPageAdapter(getContext());
+          viewPager.setAdapter(viewPageAdapter);
+        return view;
     }
 }
 
