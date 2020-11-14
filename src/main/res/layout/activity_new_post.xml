@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40dp"
-            android:text="포션투입"/>
+            android:text="게시판글작성"/>
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
         android:id="@+id/spn_birth"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:entries="@array/birth"
+        android:entries="@array/category"
         tools:ignore="MissingConstraints">
     </Spinner>
     <TextView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:textSize="20dp"
-        android:text="포션제목"/>
+        android:text="게시글 제목"/>
     <EditText
         android:id="@+id/fieldTitle"
         android:layout_width="match_parent"

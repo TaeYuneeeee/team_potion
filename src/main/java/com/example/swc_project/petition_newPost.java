@@ -39,9 +39,9 @@ public class petition_newPost extends BaseActivity {
         setContentView(R.layout.new_petition);
         mMyData = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        fab_check = (FloatingActionButton)findViewById(R.id.fabSubmitPost_petition);
-        petitionBody = (EditText)findViewById(R.id.fieldBody_petition);
-        petitionTitle = (EditText)findViewById(R.id.fieldTitle_petition);
+        fab_check = (FloatingActionButton)findViewById(R.id.petitionPost);
+        petitionBody = (EditText)findViewById(R.id.petitionTitle);
+        petitionTitle = (EditText)findViewById(R.id.petitionTitle);
 
         fab_check.setOnClickListener(new View.OnClickListener() {
             @Override

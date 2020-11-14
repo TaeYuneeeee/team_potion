@@ -7,7 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SlidingDrawer;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +36,12 @@ public class timetable extends Fragment {
     TextView Thu_1, Thu_2,Thu_3,Thu_4,Thu_5,Thu_6,Thu_7,Thu_8,Thu_9,Thu_10;
     TextView Fri_1, Fri_2,Fri_3,Fri_4,Fri_5,Fri_6,Fri_7,Fri_8,Fri_9,Fri_10;
 
+    private Spinner spn_time,spn_week;
+    EditText Te_ed_sub;
+    Button Te_bt;
+    private DatabaseReference mDatabase1;
+
+    Button btnClose;
     private DatabaseReference databaseReference;
     private DatabaseReference mDatabase;
     private FirebaseDatabase database;
@@ -43,7 +53,13 @@ public class timetable extends Fragment {
         View view = inflater.inflate(R.layout.timetable,container,false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userId = user.getUid();
-
+        mDatabase1 = FirebaseDatabase.getInstance().getReference();
+        spn_time = (Spinner)view.findViewById(R.id.spn_time);
+        spn_week = (Spinner)view.findViewById(R.id.spn_week);
+        Te_ed_sub = (EditText)view.findViewById(R.id.te_ed_sub);
+        Te_bt = (Button)view.findViewById(R.id.te_bt);
+        final String[] text_time = new String[1];
+        final String[] text_week = new String[1];
         tv_title = view.findViewById(R.id.timetable_title);
         tv_title.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1064,12 +1080,58 @@ public class timetable extends Fragment {
                 Log.e("timetable", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+        SlidingDrawer drawer = (SlidingDrawer)view.findViewById(R.id.slide);
+        spn_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text_time[0] = spn_time.getSelectedItem().toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+        spn_week.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text_week[0] = spn_week.getSelectedItem().toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("TimeTable").child(userId);
+        Te_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String Subject = Te_ed_sub.getText().toString();
+                final String timeweek = text_week[0]+text_time[0];
+                Toast.makeText(getActivity(),"입력",Toast.LENGTH_LONG).show();
+//                Timetable_DB post = new Timetable_DB(text_time[0],text_week[0],Subject);
+//                mDatabase.push().setValue(text_time[0],Subject);
+//                mDatabase.push().setValue(text_week[0]);
+                writetimetable(userId,timeweek,Subject);
+            }
+        });
+//        btnClose = (Button)view.findViewById(R.id.btnclose);
+//        btnClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SlidingDrawer drawer = (SlidingDrawer)view.findViewById(R.id.slide);
+//                drawer.animateClose();
+//            }
+//        });
         return view;
     }
     private void writeMemberInfo(String userId,String Timeweek) {
         mDatabase.child(Timeweek).setValue("0");
+    }
+    private void writetimetable(String userId,String Timeweek,String Subject) {
+        Timetable_DB post = new Timetable_DB(Subject);
+        mDatabase.child(Timeweek).setValue(post);
     }
 }
