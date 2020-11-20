@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,31 +31,62 @@ public class petition_newPost extends BaseActivity {
     private static final String TAG = "petition_newPost";
     private ArrayList<RecyItem> mMyData;
     private DatabaseReference mDatabase;
-    FloatingActionButton fab_check;
+    FloatingActionButton FAB_newPost_edit;
     EditText petitionTitle;
     EditText petitionBody;
-
+    private Spinner sp_category;
+    EditText tag1, tag2, tag3;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_petition);
         mMyData = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        fab_check = (FloatingActionButton)findViewById(R.id.petitionPost);
+        FAB_newPost_edit = (FloatingActionButton)findViewById(R.id.petitionPost);
         petitionBody = (EditText)findViewById(R.id.petitionTitle);
         petitionTitle = (EditText)findViewById(R.id.petitionTitle);
+        sp_category = (Spinner)findViewById(R.id.spn_category);
+        tag1 = (EditText)findViewById(R.id.petition_tag1);
+        tag2 = (EditText)findViewById(R.id.petition_tag2);
+        tag3 = (EditText)findViewById(R.id.petition_tag3);
+        final String[] text_category = new String[1];
+        sp_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text_category[0] = sp_category.getSelectedItem().toString();
+            }
 
-        fab_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        FAB_newPost_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String title = petitionTitle.getText().toString();
-                final String body = petitionTitle.getText().toString();
-                submitPost(title,body);
-                finish();
+                final String body = petitionBody.getText().toString();
+                final String text_tag1 = tag1.getText().toString();
+                final String text_tag2 = tag2.getText().toString();
+                final String text_tag3 = tag3.getText().toString();
+
+                Intent in = new Intent(petition_newPost.this, petition_warning.class);
+                in.putExtra("title",title);
+                in.putExtra("body",body);
+                in.putExtra("category",text_category[0]);
+                in.putExtra("tag1",text_tag1);
+                in.putExtra("tag2",text_tag2);
+                in.putExtra("tag3",text_tag3);
+                startActivity(in);
+//                submitPost(title,body);
+//                finish();
+
             }
         });
     }
-    private void submitPost(String title1, String body1){
+    /*private void submitPost(String title1, String body1){
 
         final String title = title1;
         final String body = body1;
@@ -94,5 +127,5 @@ public class petition_newPost extends BaseActivity {
 
         mDatabase.updateChildren(childUpdates);
     }
-
+    */
 }

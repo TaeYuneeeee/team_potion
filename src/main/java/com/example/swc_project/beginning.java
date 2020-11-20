@@ -59,7 +59,7 @@ public class beginning extends AppCompatActivity {
                     case R.id.tab5:{
                         getSupportFragmentManager().beginTransaction()
 //                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
-                                .replace(R.id.beginning_layout,fragment1).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
                         return true;
                     }
                     default: return false;

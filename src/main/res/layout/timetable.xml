@@ -74,35 +74,35 @@
             android:layout_row="1"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_1"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_1"
             android:layout_row="1"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_1"
             android:layout_row="1"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_1"
             android:layout_row="1"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
 
         <TextView
@@ -110,42 +110,44 @@
             android:layout_row="2"
             android:layout_column="0"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Mon_2"
             android:layout_row="2"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_2"
             android:layout_row="2"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+           />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_2"
             android:layout_row="2"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_2"
             android:layout_row="2"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_2"
             android:layout_row="2"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
+
 
         <TextView
             android:text="11"
@@ -159,77 +161,79 @@
             android:layout_row="3"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_3"
             android:layout_row="3"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_3"
             android:layout_row="3"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_3"
             android:layout_row="3"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_3"
             android:layout_row="3"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
         <TextView
             android:text="12"
             android:layout_row="4"
             android:layout_column="0"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Mon_4"
             android:layout_row="4"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_4"
             android:layout_row="4"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_4"
             android:layout_row="4"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_4"
             android:layout_row="4"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_4"
             android:layout_row="4"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
+
 
         <TextView
             android:text="13"
@@ -243,35 +247,35 @@
             android:layout_row="5"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_5"
             android:layout_row="5"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_5"
             android:layout_row="5"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_5"
             android:layout_row="5"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+           />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_5"
             android:layout_row="5"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
         <TextView
             android:text="14"
@@ -285,77 +289,80 @@
             android:layout_row="6"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_6"
             android:layout_row="6"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_6"
             android:layout_row="6"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_6"
             android:layout_row="6"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_6"
             android:layout_row="6"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
+
 
         <TextView
             android:text="15"
             android:layout_row="7"
             android:layout_column="0"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Mon_7"
             android:layout_row="7"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_7"
             android:layout_row="7"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_7"
             android:layout_row="7"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_7"
             android:layout_row="7"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_7"
             android:layout_row="7"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
+
 
         <TextView
             android:text="16"
@@ -369,35 +376,35 @@
             android:layout_row="8"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_8"
             android:layout_row="8"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_8"
             android:layout_row="8"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_8"
             android:layout_row="8"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_8"
             android:layout_row="8"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
         <TextView
             android:text="17"
@@ -411,35 +418,35 @@
             android:layout_row="9"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+           />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_9"
             android:layout_row="9"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+           />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_9"
             android:layout_row="9"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_9"
             android:layout_row="9"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_9"
             android:layout_row="9"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
         <TextView
             android:text="18"
@@ -453,35 +460,35 @@
             android:layout_row="10"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Tue_10"
             android:layout_row="10"
             android:layout_column="2"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Wed_10"
             android:layout_row="10"
             android:layout_column="3"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Thu_10"
             android:layout_row="10"
             android:layout_column="4"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
         <TextView
             android:text="강의"
             android:id="@+id/tv_Fri_10"
             android:layout_row="10"
             android:layout_column="5"
             android:layout_gravity="center"
-            android:textSize="30dp"/>
+            />
 
     </GridLayout>
     <SlidingDrawer

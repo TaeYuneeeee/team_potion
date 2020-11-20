@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="글쓰기"
+        android:text="포션 목록"
         android:id="@+id/petition_tv"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

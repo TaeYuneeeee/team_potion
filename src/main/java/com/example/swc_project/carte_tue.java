@@ -1,17 +1,12 @@
 package com.example.swc_project;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,49 +14,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-public class carte extends Fragment {
-    ViewGroup viewGroup;
+public class carte_tue extends AppCompatActivity {
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
     TextView Breakfastmenu1,Breakfastmenu2,Breakfastmenu3,Breakfastmenu4,Breakfastmenu5;
     TextView[] Breakfastmenu = new TextView[5];
     TextView Lunchmenu1,Lunchmenu2,Lunchmenu3,Lunchmenu4,Lunchmenu5;
     TextView Dinnermenu1,Dinnermenu2,Dinnermenu3,Dinnermenu4,Dinnermenu5;
-    private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
     String test;
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment2,container,false);
-        View view = inflater.inflate(R.layout.carte,container,false);
-        Breakfastmenu[0] = (TextView)view.findViewById(R.id.breakfastmenu1);
-        Breakfastmenu[1] = (TextView)view.findViewById(R.id.breakfastmenu2);
-        Breakfastmenu[2] = (TextView)view.findViewById(R.id.breakfastmenu3);
-        Breakfastmenu[3] = (TextView)view.findViewById(R.id.breakfastmenu4);
-        Breakfastmenu[4] = (TextView)view.findViewById(R.id.breakfastmenu5);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        Breakfastmenu1 = (TextView)view.findViewById(R.id.breakfastmenu1);
-        Breakfastmenu2 = (TextView)view.findViewById(R.id.breakfastmenu2);
-        Breakfastmenu3 = (TextView)view.findViewById(R.id.breakfastmenu3);
-        Breakfastmenu4 = (TextView)view.findViewById(R.id.breakfastmenu4);
-        Breakfastmenu5 = (TextView)view.findViewById(R.id.breakfastmenu5);
-
-        Lunchmenu1 = (TextView)view.findViewById(R.id.lunchmenu1);
-        Lunchmenu2 = (TextView)view.findViewById(R.id.lunchmenu2);
-        Lunchmenu3 = (TextView)view.findViewById(R.id.lunchmenu3);
-        Lunchmenu4 = (TextView)view.findViewById(R.id.lunchmenu4);
-        Lunchmenu5 = (TextView)view.findViewById(R.id.lunchmenu5);
-
-        Dinnermenu1 = (TextView)view.findViewById(R.id.dinnermenu1);
-        Dinnermenu2 = (TextView)view.findViewById(R.id.dinnermenu2);
-        Dinnermenu3 = (TextView)view.findViewById(R.id.dinnermenu3);
-        Dinnermenu4 = (TextView)view.findViewById(R.id.dinnermenu4);
-        Dinnermenu5 = (TextView)view.findViewById(R.id.dinnermenu5);
-
-        //if문을 줘서 현재 화면은 날짜로 가되 monday, tuesday 선택하면 차일드 바꿔 끼우는 걸로
-
-        //아침
         databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu1");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -365,11 +329,5 @@ public class carte extends Fragment {
                 Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-
-
-
-
-
-        return view;
     }
 }
