@@ -2,9 +2,9 @@ package com.example.swc_project;
 
 public class f4_ap_item {
     String svcNm;
-    String svcCts;
     String jrsdDptAllNm;
-    String sportTgl;
+    String svcPpo;
+    String svcCts;
 
     public String getSvcNm() {
         return svcNm;
@@ -12,14 +12,6 @@ public class f4_ap_item {
 
     public void setSvcNm(String svcNm) {
         this.svcNm = svcNm;
-    }
-
-    public String getSvcCts() {
-        return svcCts;
-    }
-
-    public void setSvcCts(String svcCts) {
-        this.svcCts = svcCts;
     }
 
     public String getJrsdDptAllNm() {
@@ -30,11 +22,19 @@ public class f4_ap_item {
         this.jrsdDptAllNm = jrsdDptAllNm;
     }
 
-    public String getSportTgl() {
-        return sportTgl;
+    public String getSvcPpo() {
+        return svcPpo;
     }
 
-    public void setSportTgl(String sportTgl) {
-        this.sportTgl = sportTgl;
+    public void setSvcPpo(String svcPpo) {
+        this.svcPpo = svcPpo;
+    }
+
+    public String getSvcCts() {
+        return svcCts;
+    }
+
+    public void setSvcCts(String svcCts) {
+        this.svcCts = svcCts;
     }
 }

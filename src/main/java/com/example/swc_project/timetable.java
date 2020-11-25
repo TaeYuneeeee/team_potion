@@ -1,6 +1,7 @@
 package com.example.swc_project;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
@@ -45,7 +46,8 @@ public class timetable extends Fragment {
     private DatabaseReference databaseReference;
     private DatabaseReference mDatabase;
     private FirebaseDatabase database;
-
+    String checkA = null;
+    String checkB = null;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -135,6 +137,7 @@ public class timetable extends Fragment {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
                 if (db != null) {
                     String Timedb = db.getSubject();
+                    checkA = Timedb;
                     Mon_1.setText(Timedb);
                 } else {
                     Mon_1.setText("빈 칸");
@@ -153,8 +156,14 @@ public class timetable extends Fragment {
                 Timetable_DB db = dataSnapshot.getValue(Timetable_DB.class);
                 if (db != null) {
                     String Timedb = db.getSubject();
-                    Mon_2.setText(Timedb);
-                } else {
+                    checkB = Timedb;
+                    if(checkA.equals(checkB)){
+                        Mon_2.setTextColor(Color.parseColor("#FF0000"));
+                    }else{
+                        Mon_2.setText(Timedb);
+                    }
+                }
+                else {
                     Mon_2.setText("빈 칸");
                 }
             }

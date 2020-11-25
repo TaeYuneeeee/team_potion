@@ -15,20 +15,20 @@
         android:checked="true"/>
     <item android:id="@+id/tab3"
         app:showAsAction="always"
-        android:icon="@drawable/c"
+        android:icon="@drawable/benefit"
         android:title="혜택"
         android:enabled="true"
         android:checked="true"/>
     <item android:id="@+id/tab4"
         app:showAsAction="always"
-        android:icon="@drawable/a"
-        android:title="시간표"
+        android:icon="@drawable/carte"
+        android:title="식단표"
         android:enabled="true"
         android:checked="true"/>
     <item android:id="@+id/tab5"
         app:showAsAction="always"
-        android:icon="@drawable/b"
-        android:title="식단표"
+        android:icon="@drawable/timetable"
+        android:title="시간표"
         android:enabled="true"
         android:checked="true"/>
 </menu>

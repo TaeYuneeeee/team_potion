@@ -20,6 +20,7 @@ public class beginning extends AppCompatActivity {
     carte carte;
     Fragment1 fragment1;
     Fragment2 fragment2;
+    benefit_test benefit_test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,8 @@ public class beginning extends AppCompatActivity {
         carte = new carte();
         fragment1 = new Fragment1();
         fragment2 = new Fragment2();
-        getSupportFragmentManager().beginTransaction().replace(R.id.beginning_layout,petition).commitAllowingStateLoss();
+        benefit_test = new benefit_test();
+        getSupportFragmentManager().beginTransaction().replace(R.id.beginning_layout,fragment2).commitAllowingStateLoss();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -41,7 +43,7 @@ public class beginning extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.tab1:{
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.beginning_layout,petition).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,fragment2).commitAllowingStateLoss();
                         return true;
                     }
                     case R.id.tab2:{
@@ -51,18 +53,18 @@ public class beginning extends AppCompatActivity {
                     }
                     case R.id.tab3:{
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.beginning_layout,benefit).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,benefit_test).commitAllowingStateLoss();
                         return true;
                     }
                     case R.id.tab4:{
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.beginning_layout,timetable).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
                         return true;
                     }
                     case R.id.tab5:{
                         getSupportFragmentManager().beginTransaction()
 //                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
-                                .replace(R.id.beginning_layout,carte).commitAllowingStateLoss();
+                                .replace(R.id.beginning_layout,timetable).commitAllowingStateLoss();
                         return true;
                     }
                     default: return false;

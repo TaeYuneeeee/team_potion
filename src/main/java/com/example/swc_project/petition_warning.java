@@ -44,6 +44,7 @@ public class petition_warning extends BaseActivity {
             @Override
             public void onClick(View view) {
                 submitPost(text_title,text_body,text_catagory,text_tag1,text_tag2,text_tag3);
+                finish();
             }
         });
 

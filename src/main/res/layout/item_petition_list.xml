@@ -8,45 +8,26 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         tools:ignore="MissingConstraints">
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:id="@+id/item_p_LL"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/postTitle_petition"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textStyle="bold"
-                tools:text="My First Post" />
-
-        </LinearLayout>
-        <LinearLayout
+            android:text="test text ayo"
+            android:id="@+id/item_petition_tv"
+            android:textSize="30dp"
+            />
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/item_p_LL">
-            <ImageView
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_toggle_star_outline_24" />
-
-            <TextView
-                android:id="@+id/postNumStars"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                tools:text="7" />
-        </LinearLayout>
-
-
+            android:background="@drawable/ic_toggle_star_outline_24"
+            android:layout_toLeftOf="@+id/item_petition_num"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:id="@+id/item_petition_num"
+            android:textSize="20dp"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

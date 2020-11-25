@@ -104,7 +104,7 @@ public class benefit extends Fragment {
                             Log.d("Bus",abc);
                             b_locationNo1 = false;
                         } else if(b_plateNo1) {
-                            benefit_item.setSvcCts(parser.getText());
+//                            benefit_item.setSvcCts(parser.getText());
                             b_plateNo1 = false;
                         }
                         break;

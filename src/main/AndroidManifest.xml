@@ -22,12 +22,14 @@
         <activity android:name=".register" android:label="회원가입"/>
         <activity android:name=".NewPostActivity" android:label="청원글쓰기"/>
         <activity android:name=".PostDetailAct" android:label="글 보기"/>
-        <activity android:name=".beginning" android:label="메인 화면"/>
+        <activity android:name=".beginning" android:label="포션"/>
         <activity android:name=".benefit_detail" android:label="혜택 상세"/>
-        <activity android:name=".petition_newPost" android:label="혜택 글쓰기"/>
+<!--        <activity android:name=".petition_newPost" android:label="혜택 글쓰기"/>-->
+        <activity android:name=".petition_detail" android:label="청원 내용"/>
         <activity android:name=".timetable_edit" android:label="시간표 작성"/>
         <activity android:name=".petition_list" android:label="포션 목록"/>
         <activity android:name=".petition_warning" android:label="포션 서약"/>
+        <activity android:name=".Im_1" android:label="혜택 내용"/>
     </application>
 
 </manifest>

@@ -16,10 +16,15 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.model.Post;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -37,8 +42,9 @@ public class Fragment2 extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReference1;
-
+    FloatingActionButton FAB_newPost;
     Button bd_tv;
+    String key = null;
     public static Fragment2 newInstance(){
         return new Fragment2();
     }
@@ -49,16 +55,26 @@ public class Fragment2 extends Fragment {
 //        viewGroup = (ViewGroup) inflater.inflate(R.layout.board,container,false);
         View view = inflater.inflate(R.layout.fragment2,container,false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.petitiontest_recy);
+        recyclerView = (RecyclerView) view.findViewById(R.id.fragment2_recy);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.scrollToPosition(0);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        bd_tv = (Button) view.findViewById(R.id.pe_test_tv);
         adapter = new Adapter_petition(data);
         data = new ArrayList<>();
+
+        FAB_newPost = (FloatingActionButton)view.findViewById(R.id.fragment2_petition_edit);
+        FAB_newPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent in = new Intent(getActivity(), petition_newPost.class);
+//                startActivity(in);
+                ((beginning)getActivity()).replaceFragment(petition_newPost.newInstance());
+            }
+        });
+
         databaseReference1 = FirebaseDatabase.getInstance().getReference().child("petition");
         databaseReference = database.getInstance().getReference("petition"); // DB 테이블 연결
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -68,7 +84,9 @@ public class Fragment2 extends Fragment {
                 data.clear(); // 기존 배열리스트가 존재하지않게 초기화
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
                     petition_Item Item = snapshot.getValue(petition_Item.class);
+                    key = Item.getKey();
                     data.add(Item); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+
                 }
                 adapter.notifyDataSetChanged();; // 리스트 저장 및 새로고침
             }
@@ -80,9 +98,12 @@ public class Fragment2 extends Fragment {
             }
         });
         recyclerView.setAdapter(adapter);
+        Log.d("Fragment2","Fragment key : "+key);
 
         return view;
     }
-
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
 
 }

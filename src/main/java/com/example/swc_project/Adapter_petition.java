@@ -85,7 +85,8 @@ public class Adapter_petition extends RecyclerView.Adapter<Adapter_petition.View
         TextView textView1;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView1 = itemView.findViewById(R.id.postTitle_petition);
+            textView1 = itemView.findViewById(R.id.item_petition_tv);
         }
     }
+
 }
