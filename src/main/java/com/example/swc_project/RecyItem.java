@@ -8,11 +8,12 @@ public class RecyItem {
 
 
 
-    public RecyItem(String uid, String body, String title, String key){
+    public RecyItem(String uid, String body, String title, String key,int starCount){
         this.uid = uid;
         this.body = body;
         this.title = title;
         this.key = key;
+        this.starCount = starCount;
 
     }
     public RecyItem(){

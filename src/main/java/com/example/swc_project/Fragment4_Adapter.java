@@ -45,8 +45,8 @@ public class Fragment4_Adapter extends RecyclerView.Adapter<Fragment4_Adapter.My
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), benefit_detail.class);
-                intent.putExtra("title",check1);
-                intent.putExtra("title",check2);
+                intent.putExtra("SvcNm",check1);
+                intent.putExtra("SvcCts",check2);
 
                 view.getContext().startActivity(intent);
             }

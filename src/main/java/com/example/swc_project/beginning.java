@@ -5,6 +5,9 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,7 +19,7 @@ public class beginning extends AppCompatActivity {
     timetable timetable;
     carte carte;
     Fragment1 fragment1;
-
+    Fragment2 fragment2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class beginning extends AppCompatActivity {
         timetable = new timetable();
         carte = new carte();
         fragment1 = new Fragment1();
-
+        fragment2 = new Fragment2();
         getSupportFragmentManager().beginTransaction().replace(R.id.beginning_layout,petition).commitAllowingStateLoss();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -68,5 +71,10 @@ public class beginning extends AppCompatActivity {
         });
 
 
+    }
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.beginning_layout, fragment).commit();
     }
 }

@@ -1,10 +1,12 @@
 package com.example.swc_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class carte_thu extends Fragment {
+import org.w3c.dom.Text;
+
+public class carte_mon extends Fragment {
+    ViewGroup viewGroup;
     TextView Breakfastmenu1,Breakfastmenu2,Breakfastmenu3,Breakfastmenu4,Breakfastmenu5,Breakfastmenu6;
     TextView Lunchmenu1,Lunchmenu2,Lunchmenu3,Lunchmenu4,Lunchmenu5,Lunchmenu6;
     TextView Dinnermenu1,Dinnermenu2,Dinnermenu3,Dinnermenu4,Dinnermenu5,Dinnermenu6;
@@ -27,31 +32,33 @@ public class carte_thu extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.carte_thu,container,false);
-        Breakfastmenu1 = (TextView)view.findViewById(R.id.thu_breakfastmenu1);
-        Breakfastmenu2 = (TextView)view.findViewById(R.id.thu_breakfastmenu2);
-        Breakfastmenu3 = (TextView)view.findViewById(R.id.thu_breakfastmenu3);
-        Breakfastmenu4 = (TextView)view.findViewById(R.id.thu_breakfastmenu4);
-        Breakfastmenu5 = (TextView)view.findViewById(R.id.thu_breakfastmenu5);
-        Breakfastmenu6 = (TextView)view.findViewById(R.id.thu_breakfastmenu6);
+//        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment2,container,false);
+        View view = inflater.inflate(R.layout.carte_mon,container,false);
 
-        Lunchmenu1 = (TextView)view.findViewById(R.id.thu_lunchmenu1);
-        Lunchmenu2 = (TextView)view.findViewById(R.id.thu_lunchmenu2);
-        Lunchmenu3 = (TextView)view.findViewById(R.id.thu_lunchmenu3);
-        Lunchmenu4 = (TextView)view.findViewById(R.id.thu_lunchmenu4);
-        Lunchmenu5 = (TextView)view.findViewById(R.id.thu_lunchmenu5);
-        Lunchmenu6 = (TextView)view.findViewById(R.id.thu_lunchmenu6);
+        Breakfastmenu1 = (TextView)view.findViewById(R.id.mon_breakfastmenu1);
+        Breakfastmenu2 = (TextView)view.findViewById(R.id.mon_breakfastmenu2);
+        Breakfastmenu3 = (TextView)view.findViewById(R.id.mon_breakfastmenu3);
+        Breakfastmenu4 = (TextView)view.findViewById(R.id.mon_breakfastmenu4);
+        Breakfastmenu5 = (TextView)view.findViewById(R.id.mon_breakfastmenu5);
+        Breakfastmenu6 = (TextView)view.findViewById(R.id.mon_breakfastmenu6);
 
+        Lunchmenu1 = (TextView)view.findViewById(R.id.mon_lunchmenu1);
+        Lunchmenu2 = (TextView)view.findViewById(R.id.mon_lunchmenu2);
+        Lunchmenu3 = (TextView)view.findViewById(R.id.mon_lunchmenu3);
+        Lunchmenu4 = (TextView)view.findViewById(R.id.mon_lunchmenu4);
+        Lunchmenu5 = (TextView)view.findViewById(R.id.mon_lunchmenu5);
+        Lunchmenu6 = (TextView)view.findViewById(R.id.mon_lunchmenu6);
 
-        Dinnermenu1 = (TextView)view.findViewById(R.id.thu_dinnermenu1);
-        Dinnermenu2 = (TextView)view.findViewById(R.id.thu_dinnermenu2);
-        Dinnermenu3 = (TextView)view.findViewById(R.id.thu_dinnermenu3);
-        Dinnermenu4 = (TextView)view.findViewById(R.id.thu_dinnermenu4);
-        Dinnermenu5 = (TextView)view.findViewById(R.id.thu_dinnermenu5);
-        Dinnermenu6 = (TextView)view.findViewById(R.id.thu_dinnermenu6);
+        Dinnermenu1 = (TextView)view.findViewById(R.id.mon_dinnermenu1);
+        Dinnermenu2 = (TextView)view.findViewById(R.id.mon_dinnermenu2);
+        Dinnermenu3 = (TextView)view.findViewById(R.id.mon_dinnermenu3);
+        Dinnermenu4 = (TextView)view.findViewById(R.id.mon_dinnermenu4);
+        Dinnermenu5 = (TextView)view.findViewById(R.id.mon_dinnermenu5);
+        Dinnermenu6 = (TextView)view.findViewById(R.id.mon_dinnermenu6);
+        //if문을 줘서 현재 화면은 날짜로 가되 monday, tuesday 선택하면 차일드 바꿔 끼우는 걸로
 
         //아침
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu1");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu1");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -71,7 +78,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu2");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu2");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -91,7 +98,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu3");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu3");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -111,7 +118,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu4");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu4");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -131,7 +138,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu5");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu5");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -150,8 +157,7 @@ public class carte_thu extends Fragment {
                 Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("breakfastmenu6");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu6");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -171,8 +177,9 @@ public class carte_thu extends Fragment {
             }
         });
 
+
         //점심
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu1");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu1");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -192,7 +199,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu2");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu2");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -212,7 +219,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu3");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu3");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -232,7 +239,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu4");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu4");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -252,7 +259,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu5");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu5");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -271,8 +278,7 @@ public class carte_thu extends Fragment {
                 Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("lunchmenu6");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu6");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -292,8 +298,9 @@ public class carte_thu extends Fragment {
             }
         });
 
+
         //저녁
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu1");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu1");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -313,7 +320,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu2");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu2");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -333,7 +340,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu3");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu3");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -353,7 +360,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu4");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu4");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -373,7 +380,7 @@ public class carte_thu extends Fragment {
             }
         });
 
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu5");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu5");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -392,8 +399,7 @@ public class carte_thu extends Fragment {
                 Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("thursday").child("dinnermenu6");
+        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu6");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -412,6 +418,7 @@ public class carte_thu extends Fragment {
                 Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+
         return view;
     }
 }

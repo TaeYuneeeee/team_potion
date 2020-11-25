@@ -6,16 +6,18 @@ public class carteItem {
     String menu3;
     String menu4;
     String menu5;
+    String menu;
 
     public carteItem(){
         // Default constructor required for calls to DataSnapshot.getValue(FirebasePost.class)
     }
-    public carteItem(String menu1, String menu2, String menu3, String menu4, String menu5) {
+    public carteItem(String menu1, String menu2, String menu3, String menu4, String menu5, String menu) {
         this.menu1 = menu1;
         this.menu2 = menu2;
         this.menu3 = menu3;
         this.menu4 = menu4;
         this.menu5 = menu5;
+        this.menu = menu;
     }
 
     public String getMenu1() {
@@ -57,4 +59,13 @@ public class carteItem {
     public void setMenu5(String menu5) {
         this.menu5 = menu5;
     }
+
+    public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
+
 }

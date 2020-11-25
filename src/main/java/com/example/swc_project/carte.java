@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,10 +24,12 @@ import org.w3c.dom.Text;
 
 public class carte extends Fragment {
     ViewGroup viewGroup;
-    TextView Breakfastmenu1,Breakfastmenu2,Breakfastmenu3,Breakfastmenu4,Breakfastmenu5;
-    TextView[] Breakfastmenu = new TextView[5];
-    TextView Lunchmenu1,Lunchmenu2,Lunchmenu3,Lunchmenu4,Lunchmenu5;
-    TextView Dinnermenu1,Dinnermenu2,Dinnermenu3,Dinnermenu4,Dinnermenu5;
+    carte_mon Carte_mon;
+    carte_tue Carte_tue;
+    carte_wed Carte_wed;
+    carte_thu Carte_thu;
+    carte_fri Carte_fri;
+    TextView Carte_date;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     String test;
@@ -35,341 +38,153 @@ public class carte extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment2,container,false);
         View view = inflater.inflate(R.layout.carte,container,false);
-        Breakfastmenu[0] = (TextView)view.findViewById(R.id.breakfastmenu1);
-        Breakfastmenu[1] = (TextView)view.findViewById(R.id.breakfastmenu2);
-        Breakfastmenu[2] = (TextView)view.findViewById(R.id.breakfastmenu3);
-        Breakfastmenu[3] = (TextView)view.findViewById(R.id.breakfastmenu4);
-        Breakfastmenu[4] = (TextView)view.findViewById(R.id.breakfastmenu5);
+        Carte_mon = new carte_mon();
+        Carte_tue = new carte_tue();
+        Carte_wed = new carte_wed();
+        Carte_thu = new carte_thu();
+        Carte_fri = new carte_fri();
+        Carte_date = (TextView)view.findViewById(R.id.carte_date);
 
-        Breakfastmenu1 = (TextView)view.findViewById(R.id.breakfastmenu1);
-        Breakfastmenu2 = (TextView)view.findViewById(R.id.breakfastmenu2);
-        Breakfastmenu3 = (TextView)view.findViewById(R.id.breakfastmenu3);
-        Breakfastmenu4 = (TextView)view.findViewById(R.id.breakfastmenu4);
-        Breakfastmenu5 = (TextView)view.findViewById(R.id.breakfastmenu5);
+//        getChildFragmentManager().beginTransaction().add(R.id.carte_fl,new carte()).commit();
+        FragmentTransaction mFragmentTransaction = getChildFragmentManager().beginTransaction();
+        mFragmentTransaction.replace(R.id.carte_fl,Carte_mon).commitAllowingStateLoss();
+        Button button_mon = (Button)view.findViewById(R.id.carte_bt_mon);
+        Button button_tue = (Button)view.findViewById(R.id.carte_bt_tue);
+        Button button_wed = (Button)view.findViewById(R.id.carte_bt_wed);
+        Button button_thu = (Button)view.findViewById(R.id.carte_bt_thu);
+        Button button_fri = (Button)view.findViewById(R.id.carte_bt_fri);
 
-        Lunchmenu1 = (TextView)view.findViewById(R.id.lunchmenu1);
-        Lunchmenu2 = (TextView)view.findViewById(R.id.lunchmenu2);
-        Lunchmenu3 = (TextView)view.findViewById(R.id.lunchmenu3);
-        Lunchmenu4 = (TextView)view.findViewById(R.id.lunchmenu4);
-        Lunchmenu5 = (TextView)view.findViewById(R.id.lunchmenu5);
 
-        Dinnermenu1 = (TextView)view.findViewById(R.id.dinnermenu1);
-        Dinnermenu2 = (TextView)view.findViewById(R.id.dinnermenu2);
-        Dinnermenu3 = (TextView)view.findViewById(R.id.dinnermenu3);
-        Dinnermenu4 = (TextView)view.findViewById(R.id.dinnermenu4);
-        Dinnermenu5 = (TextView)view.findViewById(R.id.dinnermenu5);
-
-        //if문을 줘서 현재 화면은 날짜로 가되 monday, tuesday 선택하면 차일드 바꿔 끼우는 걸로
-
-        //아침
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu1");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        button_mon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-//                    carteItem Item = snapshot.getValue(carteItem.class);
-                    test = snapshot.getValue(String.class);
-//                    String text = Item.getMenu1();
-                    if (test != null) {
-                        Breakfastmenu1.setText(test);
-                    } else {
-                        Breakfastmenu1.setText("빈 칸");
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.carte_fl,Carte_mon).commitAllowingStateLoss();
+                databaseReference = database.getInstance().getReference("carte").child("monday").child("day");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            test = snapshot.getValue(String.class);
+                            if (test != null) {
+                                Carte_date.setText(test);
+                            } else {
+                                Carte_date.setText("날 짜");
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
+
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu2");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        button_tue.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Breakfastmenu2.setText(test);
-                    } else {
-                        Breakfastmenu2.setText("빈 칸");
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.carte_fl,Carte_tue).commitAllowingStateLoss();
+                databaseReference = database.getInstance().getReference("carte").child("tuesday").child("day");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            test = snapshot.getValue(String.class);
+                            if (test != null) {
+                                Carte_date.setText(test);
+                            } else {
+                                Carte_date.setText("날 짜");
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu3");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        button_wed.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Breakfastmenu3.setText(test);
-                    } else {
-                        Breakfastmenu3.setText("빈 칸");
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.carte_fl,Carte_wed).commitAllowingStateLoss();
+                databaseReference = database.getInstance().getReference("carte").child("wednesday").child("day");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            test = snapshot.getValue(String.class);
+                            if (test != null) {
+                                Carte_date.setText(test);
+                            } else {
+                                Carte_date.setText("날 짜");
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu4");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        button_thu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Breakfastmenu4.setText(test);
-                    } else {
-                        Breakfastmenu4.setText("빈 칸");
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.carte_fl,Carte_thu).commitAllowingStateLoss();
+                databaseReference = database.getInstance().getReference("carte").child("thursday").child("day");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            test = snapshot.getValue(String.class);
+                            if (test != null) {
+                                Carte_date.setText(test);
+                            } else {
+                                Carte_date.setText("날 짜");
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
             }
         });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("breakfastmenu5");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        button_fri.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Breakfastmenu5.setText(test);
-                    } else {
-                        Breakfastmenu5.setText("빈 칸");
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.carte_fl,Carte_fri).commitAllowingStateLoss();
+                databaseReference = database.getInstance().getReference("carte").child("friday").child("day");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            test = snapshot.getValue(String.class);
+                            if (test != null) {
+                                Carte_date.setText(test);
+                            } else {
+                                Carte_date.setText("날 짜");
+                            }
+                        }
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
             }
         });
-
-        //점심
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu1");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Lunchmenu1.setText(test);
-                    } else {
-                        Lunchmenu1.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu2");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Lunchmenu2.setText(test);
-                    } else {
-                        Lunchmenu2.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu3");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Lunchmenu3.setText(test);
-                    } else {
-                        Lunchmenu3.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu4");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Lunchmenu4.setText(test);
-                    } else {
-                        Lunchmenu4.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("lunchmenu5");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Lunchmenu5.setText(test);
-                    } else {
-                        Lunchmenu5.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        //저녁
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu1");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Dinnermenu1.setText(test);
-                    } else {
-                        Dinnermenu1.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu2");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Dinnermenu2.setText(test);
-                    } else {
-                        Dinnermenu2.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu3");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Dinnermenu3.setText(test);
-                    } else {
-                        Dinnermenu3.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu4");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Dinnermenu4.setText(test);
-                    } else {
-                        Dinnermenu4.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-        databaseReference = database.getInstance().getReference("carte").child("monday").child("dinnermenu5");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    test = snapshot.getValue(String.class);
-                    if (test != null) {
-                        Dinnermenu5.setText(test);
-                    } else {
-                        Dinnermenu5.setText("빈 칸");
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // 디비를 가져오던중 에러 발생 시
-                Log.e("carte", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-
 
 
 
         return view;
+
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +13,8 @@
         android:id="@+id/petition_tv"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/petition_tv"
         android:id="@+id/petition_recy"
         />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,5 +27,5 @@
         android:src="@drawable/common_google_signin_btn_icon_dark"/>
 
 
-</LinearLayout>
+</RelativeLayout>
 

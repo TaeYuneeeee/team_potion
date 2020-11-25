@@ -17,12 +17,13 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 public class Adapter_petition extends RecyclerView.Adapter<Adapter_petition.ViewHolder> {
-    private ArrayList<RecyItem> mData;
+    private ArrayList<petition_Item> mData;
     private LayoutInflater mInflate;
     private Context mContext;
     final DatabaseReference databaseReference = null;
     private JSONArray dataSet;
-    public Adapter_petition(Context context, ArrayList<RecyItem> persons){
+
+    public Adapter_petition(Context context, ArrayList<petition_Item> persons){
         this.mContext = context;
         this.mInflate = LayoutInflater.from(context);
         this.mData = persons;
@@ -41,11 +42,16 @@ public class Adapter_petition extends RecyclerView.Adapter<Adapter_petition.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final DatabaseReference reference = null;
-        RecyItem item = mData.get(position);
+        petition_Item item = mData.get(position);
 
         final String sttitle = mData.get(position).getTitle();
-        final String stbody = mData.get(position).getTitle();
-        final String key = mData.get(position).getTitle();
+        final String stbody = mData.get(position).getBody();
+        final String key = mData.get(position).getKey();
+        final String category = mData.get(position).getCategory();
+        final int starcount = mData.get(position).getStarCount();
+        final String tag1 = mData.get(position).getTag1();
+        final String tag2 = mData.get(position).getTag2();
+        final String tag3 = mData.get(position).getTag3();
 
         holder.textView1.setText(mData.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +61,11 @@ public class Adapter_petition extends RecyclerView.Adapter<Adapter_petition.View
                 intent.putExtra("title",sttitle);
                 intent.putExtra("body",stbody);
                 intent.putExtra("key",key);
+                intent.putExtra("category",category);
+                intent.putExtra("starcount",starcount);
+                intent.putExtra("tag1",tag1);
+                intent.putExtra("tag1",tag2);
+                intent.putExtra("tag1",tag3);
                 view.getContext().startActivity(intent);
             }
         });
@@ -65,7 +76,7 @@ public class Adapter_petition extends RecyclerView.Adapter<Adapter_petition.View
     public int getItemCount() {
         return (mData !=null?mData.size():0);
     }
-    Adapter_petition(ArrayList<RecyItem> list) {
+    Adapter_petition(ArrayList<petition_Item> list) {
 //        Adapter(ArrayList<Post> list) {
         mData = list ;
     }

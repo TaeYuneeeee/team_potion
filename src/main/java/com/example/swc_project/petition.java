@@ -32,23 +32,31 @@ public class petition extends Fragment {
     private String TAG = "petition";
     ViewPageAdapter viewPageAdapter;
     ViewPager viewPager;
-
+    Fragment2 fragment2;
     TextView Petition_list;
-
+    public static petition newInstance(){
+        return new petition();
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.petition,container,false);
 //        viewGroup = (ViewGroup) inflater.inflate(R.layout.petition,container,false);
         Petition_list = (TextView) view.findViewById(R.id.petition_list);
-
+        fragment2 = new Fragment2();
         Petition_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), petition_list.class);
                 startActivity(in);
+
+                //밑에꺼는 fragment로 화면 구성할 때
+//                ((beginning)getActivity()).replaceFragment(Fragment2.newInstance());
+
             }
         });
+
+
         viewPager = (ViewPager)view.findViewById(R.id.viewpager);
         viewPageAdapter = new ViewPageAdapter(getContext());
         viewPager.setAdapter(viewPageAdapter);

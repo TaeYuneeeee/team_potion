@@ -23,15 +23,15 @@ public class benefit_detail extends AppCompatActivity {
             text3 = (TextView)findViewById(R.id.fragment4_detail_ht3);
             text4 = (TextView)findViewById(R.id.fragment4_detail_ht4);
 
-            this.tx1 = getIntent().getStringExtra("SvcNm");
+            this.tx1 = getIntent().getStringExtra("SvcCts");
             this.tx2 = getIntent().getStringExtra("JrsdDptAllNm");
             this.tx3 = getIntent().getStringExtra("SportTgl");
-            this.tx4 = getIntent().getStringExtra("SvcCts");
+//            this.tx4 = getIntent().getStringExtra("SvcCts");
 
             text1.setText(tx1);
             text2.setText(tx2);
             text3.setText(tx4);
-            text4.setText(tx3);
+//            text4.setText(tx3);
 
 
 

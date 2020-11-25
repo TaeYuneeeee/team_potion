@@ -12,7 +12,7 @@
         android:gravity ="center"
         android:fillViewport="true"
         android:layout_marginTop="0dp"
-        android:id="@+id/scrollView">
+        android:id="@+id/wed_scrollView">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,31 +30,37 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breakfastmenu1"
+                    android:id="@+id/wed_breakfastmenu1"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breakfastmenu2"
+                    android:id="@+id/wed_breakfastmenu2"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breakfastmenu3"
+                    android:id="@+id/wed_breakfastmenu3"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breakfastmenu4"
+                    android:id="@+id/wed_breakfastmenu4"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/breakfastmenu5"
+                    android:id="@+id/wed_breakfastmenu5"
+                    android:textSize="20dp"
+                    android:text="빈 공간"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wed_breakfastmenu6"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
             </LinearLayout>
@@ -72,31 +78,37 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lunchmenu1"
+                    android:id="@+id/wed_lunchmenu1"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lunchmenu2"
+                    android:id="@+id/wed_lunchmenu2"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lunchmenu3"
+                    android:id="@+id/wed_lunchmenu3"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lunchmenu4"
+                    android:id="@+id/wed_lunchmenu4"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lunchmenu5"
+                    android:id="@+id/wed_lunchmenu5"
+                    android:textSize="20dp"
+                    android:text="빈 공간"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wed_lunchmenu6"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
             </LinearLayout>
@@ -113,31 +125,37 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dinnermenu1"
+                    android:id="@+id/wed_dinnermenu1"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dinnermenu2"
+                    android:id="@+id/wed_dinnermenu2"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dinnermenu3"
+                    android:id="@+id/wed_dinnermenu3"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dinnermenu4"
+                    android:id="@+id/wed_dinnermenu4"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dinnermenu5"
+                    android:id="@+id/wed_dinnermenu5"
+                    android:textSize="20dp"
+                    android:text="빈 공간"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wed_dinnermenu6"
                     android:textSize="20dp"
                     android:text="빈 공간"/>
             </LinearLayout>

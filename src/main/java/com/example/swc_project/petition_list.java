@@ -33,10 +33,10 @@ public class petition_list extends AppCompatActivity {
     private String TAG = "petition";
 
     private RecyclerView recyclerView;
-    private Adapter adapter;
+    private Adapter_petition adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private ArrayList<RecyItem> data;
+    private ArrayList<petition_Item> data;
 
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -44,6 +44,13 @@ public class petition_list extends AppCompatActivity {
     TextView petition_tv;
 
     FloatingActionButton FAB_newPost;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     @Nullable
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +64,7 @@ public class petition_list extends AppCompatActivity {
         recyclerView.scrollToPosition(0);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         petition_tv = (TextView) findViewById(R.id.petition_tv);
-        adapter = new Adapter(data);
+        adapter = new Adapter_petition(data);
         data = new ArrayList<>();
         FAB_newPost = (FloatingActionButton)findViewById(R.id.Post_petition_edit);
 
@@ -78,8 +85,10 @@ public class petition_list extends AppCompatActivity {
                 // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 data.clear(); // 기존 배열리스트가 존재하지않게 초기화
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    RecyItem Item = snapshot.getValue(RecyItem.class);
+                    petition_Item Item = snapshot.getValue(petition_Item.class);
                     data.add(Item); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+                    String test = Item.getTitle();
+                    Log.d("petition_list","getTitile : "+test);
                 }
                 adapter.notifyDataSetChanged();; // 리스트 저장 및 새로고침
             }
@@ -91,5 +100,7 @@ public class petition_list extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(adapter);
+
+
     }
 }
